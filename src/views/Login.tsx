@@ -12,10 +12,11 @@ import Cookies from "js-cookie";
 
     const {mensaje} = await LoginService(obj.correo, obj.contrasena);
 
-    if (mensaje === 'Contraseña incorrecta.') return
-    if (mensaje === 'Email y password son obligatorios.') return
-    Cookies.set('email', obj.correo)
-    return redirect("/Inicio");
+    if (mensaje === 'Contraseña incorrecta.' || mensaje === 'Email y password son obligatorios.' || mensaje === 'Usuario no encontrado.') return
+    else {
+      Cookies.set('email', obj.correo)
+      return redirect("/Inicio");
+    }
   }
 
 export default function Login() {
