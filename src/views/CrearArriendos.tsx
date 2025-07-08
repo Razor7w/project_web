@@ -3,11 +3,16 @@ import { CrearArriendos } from "../services/CrearArriendosServices";
 
 export async function action({ request }: ActionFunctionArgs) {
   const CrearArriendoFormData = Object.fromEntries(await request.formData());
-  const resultado = await CrearArriendos(CrearArriendoFormData);
-  if (!resultado?.success) {
-    return resultado;
+
+  const obj = {
+    patenteVehiculo: CrearArriendoFormData.patenteVehiculo as string,
+    tipoVehiculo: CrearArriendoFormData.tipoVehiculo as string,
+    rutCliente: CrearArriendoFormData.rutCliente as string,
+    nombreCliente: CrearArriendoFormData.nombreCliente as string,
   }
-  return redirect("/");
+  const {mensaje} = await CrearArriendos(obj);
+  if (mensaje === 'Los campos son obligatorios.') return
+  return redirect("/Home");
 }
 
 export default function crearArriendosForm() {
@@ -16,25 +21,25 @@ export default function crearArriendosForm() {
       <Form method="POST">
         <h1 className="mb-4">Crear Arriendo</h1>
         <div className="mb-3">
-          <label htmlFor="rutUsuario" className="form-label">
+          <label htmlFor="rutCliente" className="form-label">
             Ingresa el RUT del Usuario.
           </label>
-          <input type="text" className="form-control" id="rutUsuario" name="rutUsuario" />
+          <input type="text" className="form-control" id="rutCliente" name="rutCliente" />
         </div>
         <div className="mb-3">
-          <label htmlFor="nombreUsuario" className="form-label">
+          <label htmlFor="nombreCliente" className="form-label">
             Ingresa el nombre del Usuario.
           </label>
-          <input type="text" className="form-control" id="nombreUsuario" name="nombreUsuario" />
+          <input type="text" className="form-control" id="nombreCliente" name="nombreCliente" />
         </div>
         <div className="mb-3">
-          <label htmlFor="nombreUsuario" className="form-label">
+          <label htmlFor="patenteVehiculo" className="form-label">
             Ingrese la pantente del vehículo.
           </label>
           <input type="text" className="form-control" id="patenteVehiculo" name="patenteVehiculo" />
         </div>
         <div className="mb-3">
-          <label htmlFor="nombreUsuario" className="form-label">
+          <label htmlFor="tipoVehiculo" className="form-label">
             Ingrese el tipo de vehículo.
           </label>
           <select
@@ -44,10 +49,10 @@ export default function crearArriendosForm() {
             aria-label="Default select example"
             defaultValue="0"
           >
-            <option value="0">Selecciona el tipo de vehiculo</option>
-            <option value="1">Sedán</option>
-            <option value="2">SUV</option>
-            <option value="3">Camioneta</option>
+            <option value="">Selecciona el tipo de vehiculo</option>
+            <option value="Sedán">Sedán</option>
+            <option value="SUV">SUV</option>
+            <option value="Camioneta">Camioneta</option>
           </select>
         </div>
         <button type="reset" className="btn btn-warning me-2">
