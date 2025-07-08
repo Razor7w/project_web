@@ -14,3 +14,14 @@ export const MostrarTodosLosArriendosSchema = array(MostrarElArriendoSchema);
 
 //Tipos(Types)
 export type MostrarTodosLosArriendos = InferOutput<typeof MostrarElArriendoSchema>;
+
+
+export type Vehiculo = {
+  fechaFin: Date | null
+  fechaInicio: Date
+  id: string
+  nombreCliente: string
+  patenteVehiculo: string
+  rutCliente: string
+  tipoVehiculo: string
+};

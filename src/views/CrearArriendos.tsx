@@ -11,6 +11,7 @@ export async function action({ request }: ActionFunctionArgs) {
     nombreCliente: CrearArriendoFormData.nombreCliente as string,
   }
   const {mensaje} = await CrearArriendos(obj);
+
   if (mensaje === 'Los campos son obligatorios.') return
   return redirect("/Home");
 }

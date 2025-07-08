@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./views/Home";
-import Arriendos, { loader as loaderTodosLosArriendos } from "./views/Arriendos";
 import ArriendosActivos from "./views/ArriendosActivos";
 import ArriendosTerminados from "./views/ArriendosTerminados";
 import CrearArriendos, { action as actionArriendoCrear } from "./views/CrearArriendos";
@@ -10,6 +9,7 @@ import EditarArriendo from "./views/EditarArriendo";
 import Loader from "./components/Loader";
 import Login from "./views/Login";
 import Registrar from "./views/Registrar";
+import { ArriendosActivosLoader, ArriendosTerminadosLoader } from "./services/ArriendoService";
 
 export const router = createBrowserRouter([
   {
@@ -26,17 +26,14 @@ export const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: "arriendos",
-        element: <Arriendos />,
-        loader: loaderTodosLosArriendos,
-      },
-      {
         path: "arriendosActivos",
         element: <ArriendosActivos />,
+        loader: ArriendosActivosLoader
       },
       {
         path: "arriendosTerminados",
         element: <ArriendosTerminados />,
+        loader: ArriendosTerminadosLoader
       },
       {
         path: "crearArriendo",
