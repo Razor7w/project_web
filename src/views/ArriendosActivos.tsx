@@ -2,6 +2,23 @@ import { useLoaderData, useRevalidator } from "react-router-dom";
 import type { Vehiculo } from "../types/arriendo";
 import { devolucionArriendos, eliminarArriendos } from "../services/ArriendoService";
 
+export const limpiarFecha = (fecha: string): string => {
+
+  const fechaLimpia = new Date(fecha);
+
+  const opciones: Intl.DateTimeFormatOptions = {
+    timeZone: "America/Santiago",
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  };
+
+  return fechaLimpia.toLocaleString("es-CL", opciones);
+}
+
 export default function ArriendosActivos() {
   const vehiculos = useLoaderData() as Vehiculo[];
   const { revalidate } = useRevalidator();
@@ -42,7 +59,7 @@ export default function ArriendosActivos() {
                 <td>{arriendo.nombreCliente}</td>
                 <td>{arriendo.patenteVehiculo}</td>
                 <td>{arriendo.tipoVehiculo}</td>
-                <td>{arriendo.fechaInicio instanceof Date ? arriendo.fechaInicio.toLocaleDateString() : arriendo.fechaInicio}</td>
+                <td>{arriendo.fechaInicio instanceof Date ? limpiarFecha(arriendo.fechaInicio.toLocaleDateString()) : limpiarFecha(arriendo.fechaInicio)}</td>
                 <td>
                   {arriendo.fechaFin
                     ? arriendo.fechaFin instanceof Date
