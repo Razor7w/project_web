@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function Inicio() {
   return (
     <>
-      <h2 className="text-center">Revisión</h2>
+      <h2 className="text-center">Gestión</h2>
       <div className="container-fluid">
         <div className="row ">
           <div className="col-12 col-md-6 col-lg-4 mb-3">
@@ -22,6 +22,7 @@ export default function Inicio() {
                       <h5 className="card-title">Arriendos Activos</h5>
                       <p className="card-text">Revisa todos los arriendos activos.</p>
                     </div>
+                    <br />
                     <NavLink to="/arriendosActivos" className="btn btn-primary mt-auto">
                       Visitar
                     </NavLink>
@@ -47,6 +48,7 @@ export default function Inicio() {
                       <h5 className="card-title">Arriendos Terminados</h5>
                       <p className="card-text">Revisa los arriendos pasados aquí.</p>
                     </div>
+                    <br />
                     <NavLink to="/arriendosTerminados" className="btn btn-primary mt-auto">
                       Visitar
                     </NavLink>
@@ -81,8 +83,7 @@ export default function Inicio() {
             </div>
           </div>
         </div>
-        <h2 className="text-center">Gestión</h2>
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col-sm-4 mb-3 mb-sm-0">
             <div className="card mb-6" style={{ maxWidth: "600px" }}>
               <div className="row g-0">
@@ -92,37 +93,6 @@ export default function Inicio() {
                     <p className="card-text">Agrega un nuevo arriendo.</p>
                     <NavLink to="/crearArriendo" className="btn btn-success">
                       <i className="bi bi-file-earmark-plus"></i>
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm-4 mb-3 mb-sm-0">
-            <div className="card mb-6" style={{ maxWidth: "600px" }}>
-              <div className="row g-0">
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">Eliminar Arriendo</h5>
-                    <p className="card-text">Finaliza o elimina arriendos activos.</p>
-                    <NavLink to="/eliminarArriendo" className="btn btn-danger">
-                      <i className="bi bi-trash3"></i>
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-4 mb-3 mb-sm-0">
-            <div className="card mb-6" style={{ maxWidth: "600px" }}>
-              <div className="row g-0">
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">Editar Arriendo</h5>
-                    <p className="card-text">Edita los datos de arriendos activos.</p>
-                    <NavLink to="/editarArriendo" className="btn btn-warning">
-                      <i className="bi bi-pencil"></i>
                     </NavLink>
                   </div>
                 </div>
