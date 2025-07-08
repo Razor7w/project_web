@@ -29,7 +29,7 @@ export default function Navbar() {
                 </li>
               </ul>
               <li className="nav-item p-3 d-flex">
-                  <NavLink to="/" className="nav-link text-light">
+                  <NavLink to="/cambiarContrasena" className="nav-link text-light">
                     Cambiar Contraseña
                   </NavLink>
               </li>

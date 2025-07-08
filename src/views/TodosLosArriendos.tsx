@@ -29,7 +29,7 @@ export default function TodosLosArriendos() {
                     </tr>
                     <tr>
                         <td>Sedán</td>
-                        <td>{numeroDeArriendosPorTipo('sedán')}</td>
+                        <td>{numeroDeArriendosPorTipo('Sedán')}</td>
                     </tr>
                 </tbody>
             </table>

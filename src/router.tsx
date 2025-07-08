@@ -9,6 +9,7 @@ import Registrar from "./views/Registrar";
 import { ArriendosActivosLoader, ArriendosTerminadosLoader, TodosLosArriendosLoader } from "./services/ArriendoService";
 import TodosLosArriendos from "./views/TodosLosArriendos";
 import Inicio from "./views/Home";
+import CambiarContraseña from "./views/CambiarContraseña";
 
 export const router = createBrowserRouter([
   {
@@ -45,8 +46,12 @@ export const router = createBrowserRouter([
         loader: TodosLosArriendosLoader
       },
       {
-        path: "Registrar",
+        path: "registrar",
         element: <Registrar />,
+      },
+      {
+        path: "cambiarContrasena",
+        element: <CambiarContraseña />,
       },
     ],
   },
