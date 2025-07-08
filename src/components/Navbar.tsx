@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid bg-primary">
-        <label className="navbar-brand text-light">Mi Arriendo</label>
+        <label className="navbar-brand text-light"><b>Mi Arriendo</b></label>
         <button
           className="navbar-toggler "
           type="button"
@@ -28,10 +28,15 @@ export default function Navbar() {
                   </NavLink>
                 </li>
               </ul>
-              <li className="nav-item d-flex ">
-                <button className="nav-link  text-light" role="button" aria-expanded="false">
-                  Cerrar Sesion
-                </button>
+              <li className="nav-item p-3 d-flex">
+                  <NavLink to="/" className="nav-link text-light">
+                    Cambiar Contraseña
+                  </NavLink>
+              </li>
+              <li className="nav-item d-flex">
+                  <NavLink to="/" className="nav-link text-light">
+                    Cerrar Sesion
+                  </NavLink>
               </li>
             </>
           )}
