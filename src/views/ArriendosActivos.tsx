@@ -68,11 +68,11 @@ export default function ArriendosActivos() {
                     : '----------'}
                 </td>
                 <td>
-                  <button className="btn btn-danger me-1" role="button" onClick={() => borrar(arriendo.id)} >
-                   <i className="bi bi-trash3"></i>
+                <button className="btn btn-danger me-1" role="button" onClick={() => borrar(arriendo.id)} >
+                   <i className="bi bi-trash3"> Cancelar</i>
                   </button>
-                  <button className="btn btn-warning" role="button" onClick={() => devolucion(arriendo.id)}>
-                   <i className="bi bi-pencil"></i>
+                  <button className="btn btn-success" role="button" onClick={() => devolucion(arriendo.id)}>
+                  <i className="bi bi-check2"> Finalizar</i>
                   </button>
                 </td>
               </tr>
