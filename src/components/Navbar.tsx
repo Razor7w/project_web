@@ -28,12 +28,12 @@ export default function Navbar() {
                   </NavLink>
                 </li>
               </ul>
-              <li className="nav-item p-3 d-flex">
+              <li className="nav-item p-2 d-flex">
                   <NavLink to="/cambiarContrasena" className="nav-link text-light">
                     Cambiar Contraseña
                   </NavLink>
               </li>
-              <li className="nav-item d-flex">
+              <li className="nav-item p-2 d-flex">
                   <NavLink to="/" className="nav-link text-light">
                     Cerrar Sesion
                   </NavLink>
