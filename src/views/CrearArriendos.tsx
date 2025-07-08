@@ -1,5 +1,5 @@
 import { Form, redirect, type ActionFunctionArgs } from "react-router-dom";
-import { CrearArriendos } from "../services/CrearArriendosServices";
+import { CrearArriendos } from "../services/CrearArriendosService";
 
 export async function action({ request }: ActionFunctionArgs) {
   const CrearArriendoFormData = Object.fromEntries(await request.formData());
