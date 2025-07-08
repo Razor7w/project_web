@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Home from "./views/Home";
 import ArriendosActivos from "./views/ArriendosActivos";
 import ArriendosTerminados from "./views/ArriendosTerminados";
 import CrearArriendos, { action as actionArriendoCrear } from "./views/CrearArriendos";
-import EliminarArriendo from "./views/EliminarArriendo";
-import EditarArriendo from "./views/EditarArriendo";
 import Loader from "./components/Loader";
 import Login from "./views/Login";
 import Registrar from "./views/Registrar";
 import { ArriendosActivosLoader, ArriendosTerminadosLoader } from "./services/ArriendoService";
+import TodosLosArriendos from "./views/TodosLosArriendos";
+import Inicio from "./views/Home";
 
 export const router = createBrowserRouter([
   {
@@ -22,8 +21,8 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
        {
-        path: "Home",
-        element: <Home />
+        path: "Inicio",
+        element: <Inicio />
       },
       {
         path: "arriendosActivos",
@@ -41,12 +40,8 @@ export const router = createBrowserRouter([
         action: actionArriendoCrear,
       },
       {
-        path: "editarArriendo/:id",
-        element: <EditarArriendo />,
-      },
-      {
-        path: "eliminarArriendo/:id",
-        element: <EliminarArriendo />,
+        path: "todosLosArriendos",
+        element: <TodosLosArriendos />,
       },
       {
         path: "Registrar",

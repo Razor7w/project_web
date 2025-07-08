@@ -20,7 +20,7 @@ export default function Login() {
             <input type="password" className="form-control" id="contraseñausuario" />
           </div>
 
-          <Link to="/Home" className="btn btn-success mt-2">
+          <Link to="/Inicio" className="btn btn-success mt-2">
             Ingresar
           </Link>
           <br />

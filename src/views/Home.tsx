@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function Home() {
+export default function Inicio() {
   return (
     <>
       <h2 className="text-center">Revisión</h2>
@@ -72,7 +72,7 @@ export default function Home() {
                       <h5 className="card-title">Todos los Arriendos</h5>
                       <p className="card-text">Todo el registro de arriendos pasados aquí.</p>
                     </div>
-                    <NavLink to="/arriendos" className="btn btn-primary mt-auto">
+                    <NavLink to="/todosLosArriendos" className="btn btn-primary mt-auto">
                       Visitar
                     </NavLink>
                   </div>
