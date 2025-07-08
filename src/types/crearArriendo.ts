@@ -1,12 +1,10 @@
-import { array, object, string, optional, type InferInput, type InferOutput } from "valibot";
+import { array, object, string, type InferInput, type InferOutput } from "valibot";
 
 export const CrearArriendoSchema = object({
-  fechaInicio: string(),
-  fechaFin: optional(string()),
   patenteVehiculo: string(),
   tipoVehiculo: string(),
-  rutUsuario: string(),
-  nombreUsuario: string(),
+  rutCliente: string(),
+  nombreCliente: string(),
 });
 
 export const CrearArriendosSchema = array(CrearArriendoSchema);
