@@ -1,28 +1,45 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect, type ActionFunctionArgs } from "react-router-dom";
+import { LoginService } from "../services/UsuariosService";
+
+  export async function action({ request }: ActionFunctionArgs) {
+    const LoginFormData = Object.fromEntries(await request.formData());
+
+    const obj = {
+      correo: LoginFormData.correo as string,
+      contrasena: LoginFormData.contrasena as string,
+    }
+
+    const {mensaje} = await LoginService(obj.correo, obj.contrasena);
+
+    if (mensaje === 'Contraseña incorrecta.') return
+    if (mensaje === 'Email y password son obligatorios.') return
+    return redirect("/Inicio");
+  }
 
 export default function Login() {
+
   return (
     <>
       <h2 className="text-center">Inicio Sesion</h2>
       <br />
       <div className="container-fluid col-3">
-        <Form>
+        <Form method="POST">
           <div className="mb-3">
-            <label htmlFor="nombreusuario" className="form-label">
-              Nombre de usuario
+            <label htmlFor="correo" className="form-label">
+              Correo
             </label>
-            <input type="text" className="form-control" id="nombreusuario" />
+            <input type="text" className="form-control" id="correo" name="correo" />
           </div>
           <div className="mb-3">
-            <label htmlFor="contraseñausuario" className="form-label">
+            <label htmlFor="contrasena" className="form-label">
               Contraseña
             </label>
-            <input type="password" className="form-control" id="contraseñausuario" />
+            <input type="password" className="form-control" id="contrasena" name="contrasena" />
           </div>
 
-          <Link to="/Inicio" className="btn btn-success mt-2">
+          <button className="btn btn-success mt-2" type="submit">
             Ingresar
-          </Link>
+          </button>
           <br />
           <Link to="/Registrar" className="btn btn-primary mt-2">
             Registrate aquí
