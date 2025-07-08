@@ -41,6 +41,16 @@ export async function ArriendosTerminadosLoader() {
   }
 }
 
+export async function TodosLosArriendosLoader() {
+  try {
+    const response = await axios.get("http://localhost:3000/api/arriendos/totalesPorTipo");
+    return response.data;
+  } catch (error) {
+    console.error("Error al cargar arriendos arriendos Terminados:", error);
+    throw new Error("Error al cargar arriendos arriendos Terminados");
+  }
+}
+
 
 export async function eliminarArriendos(id: string) {
   try {

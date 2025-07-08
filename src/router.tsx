@@ -6,7 +6,7 @@ import CrearArriendos, { action as actionArriendoCrear } from "./views/CrearArri
 import Loader from "./components/Loader";
 import Login from "./views/Login";
 import Registrar from "./views/Registrar";
-import { ArriendosActivosLoader, ArriendosTerminadosLoader } from "./services/ArriendoService";
+import { ArriendosActivosLoader, ArriendosTerminadosLoader, TodosLosArriendosLoader } from "./services/ArriendoService";
 import TodosLosArriendos from "./views/TodosLosArriendos";
 import Inicio from "./views/Home";
 
@@ -42,6 +42,7 @@ export const router = createBrowserRouter([
       {
         path: "todosLosArriendos",
         element: <TodosLosArriendos />,
+        loader: TodosLosArriendosLoader
       },
       {
         path: "Registrar",

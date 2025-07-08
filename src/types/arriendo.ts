@@ -15,6 +15,10 @@ export const MostrarTodosLosArriendosSchema = array(MostrarElArriendoSchema);
 //Tipos(Types)
 export type MostrarTodosLosArriendos = InferOutput<typeof MostrarElArriendoSchema>;
 
+export type VehiculosTipos = {
+  cantidad: number
+  tipoVehiculo: string
+}
 
 export type Vehiculo = {
   fechaFin: Date | null
