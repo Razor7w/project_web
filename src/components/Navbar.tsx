@@ -1,8 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Navbar() {
-   const location = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const logout = () => {
+    Cookies.remove('email')
+    navigate("/")
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid bg-primary">
@@ -34,9 +40,9 @@ export default function Navbar() {
                   </NavLink>
               </li>
               <li className="nav-item p-2 d-flex">
-                  <NavLink to="/" className="nav-link text-light">
+                  <button className="nav-link text-light" onClick={() => logout()} >
                     Cerrar Sesion
-                  </NavLink>
+                  </button>
               </li>
             </>
           )}
