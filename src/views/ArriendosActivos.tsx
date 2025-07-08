@@ -1,17 +1,20 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useRevalidator } from "react-router-dom";
 import type { Vehiculo } from "../types/arriendo";
+import { devolucionArriendos, eliminarArriendos } from "../services/ArriendoService";
 
 export default function ArriendosActivos() {
   const vehiculos = useLoaderData() as Vehiculo[];
+  const { revalidate } = useRevalidator();
 
   const borrar = async (id: string) => {
-    // Aquí puedes implementar la lógica para eliminar el arriendo
-    console.log(`borrar arriendo con ID: ${id}`);
+    const resp = await eliminarArriendos(id);
+    if (resp === 'Arriendo borrado') revalidate()
+    
   }
 
   const devolucion = async (id: string) => {
-    // Aquí puedes implementar la lógica para eliminar el arriendo
-    console.log(`devolucion arriendo con ID: ${id}`);
+    const resp = await devolucionArriendos(id)
+    if (resp === 'Devolucion exitosa') revalidate()
   }
 
   return (
