@@ -1,5 +1,13 @@
 import { Form, redirect, type ActionFunctionArgs } from "react-router-dom";
 import { CrearArriendos } from "../services/CrearArriendosService";
+import { format, validate } from "rut.js";
+
+export function validarLetrasYNumeros(input: string): boolean {
+  const letras = input.match(/[a-zA-Z]/g) || [];
+  const numeros = input.match(/[0-9]/g) || [];
+
+  return letras.length >= 4 && numeros.length >= 2;
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   const CrearArriendoFormData = Object.fromEntries(await request.formData());
@@ -7,8 +15,16 @@ export async function action({ request }: ActionFunctionArgs) {
   const obj = {
     patenteVehiculo: CrearArriendoFormData.patenteVehiculo as string,
     tipoVehiculo: CrearArriendoFormData.tipoVehiculo as string,
-    rutCliente: CrearArriendoFormData.rutCliente as string,
+    rutCliente: format(CrearArriendoFormData.rutCliente as string, { dots: false }),
     nombreCliente: CrearArriendoFormData.nombreCliente as string,
+  }
+  if (!validate(obj.rutCliente)) {
+    console.error("El rut ingresado es inválido.");
+    return;
+  }
+  if (!validarLetrasYNumeros(obj.patenteVehiculo)) {
+    console.error("La patente debe contener al menos 4 letras y 2 números.");
+    return;
   }
   const {mensaje} = await CrearArriendos(obj);
 
