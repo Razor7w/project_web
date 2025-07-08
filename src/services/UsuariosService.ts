@@ -21,3 +21,14 @@ export async function RegisterService(correo: string, contrasena: string) {
     throw error;
   }
 }
+
+export async function CambiarContrasenaService(correo: string, contrasenaAnterior: string, nuevacontrasena: string) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/cambiarContrasena`;
+    const { data } = await axios.put(url, {correo, contrasenaAnterior, nuevacontrasena});
+    return data
+  } catch (error) {
+    console.error("Error al obtener los arriendos:", error);
+    throw error;
+  }
+}

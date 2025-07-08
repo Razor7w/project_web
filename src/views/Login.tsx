@@ -1,5 +1,6 @@
 import { Form, Link, redirect, type ActionFunctionArgs } from "react-router-dom";
 import { LoginService } from "../services/UsuariosService";
+import Cookies from "js-cookie";
 
   export async function action({ request }: ActionFunctionArgs) {
     const LoginFormData = Object.fromEntries(await request.formData());
@@ -13,6 +14,7 @@ import { LoginService } from "../services/UsuariosService";
 
     if (mensaje === 'Contraseña incorrecta.') return
     if (mensaje === 'Email y password son obligatorios.') return
+    Cookies.set('email', obj.correo)
     return redirect("/Inicio");
   }
 

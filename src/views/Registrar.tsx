@@ -26,8 +26,6 @@ export async function action({ request }: ActionFunctionArgs) {
   }
   const {mensaje} = await RegisterService(obj.correo, obj.contrasena);
 
-  console.log(mensaje);
-
   if (mensaje === 'El usuario ya existe.') return
   return redirect("/");
 }
