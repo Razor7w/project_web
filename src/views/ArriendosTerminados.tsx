@@ -1,6 +1,7 @@
 import { useLoaderData, useRevalidator } from "react-router-dom";
 import type { Vehiculo } from "../types/arriendo";
 import { eliminarArriendos } from "../services/ArriendoService";
+import { limpiarFecha } from "./ArriendosActivos";
 
 export default function ArriendosTerminados() {
   const vehiculos = useLoaderData() as Vehiculo[];
@@ -37,12 +38,12 @@ export default function ArriendosTerminados() {
                 <td>{arriendo.nombreCliente}</td>
                 <td>{arriendo.patenteVehiculo}</td>
                 <td>{arriendo.tipoVehiculo}</td>
-                <td>{arriendo.fechaInicio instanceof Date ? arriendo.fechaInicio.toLocaleDateString() : arriendo.fechaInicio}</td>
+                <td>{arriendo.fechaInicio instanceof Date ? limpiarFecha(arriendo.fechaInicio.toLocaleDateString()) : limpiarFecha(arriendo.fechaInicio)}</td>
                 <td>
                   {arriendo.fechaFin
                     ? arriendo.fechaFin instanceof Date
                       ? arriendo.fechaFin.toLocaleDateString()
-                      : arriendo.fechaFin
+                      : limpiarFecha(arriendo.fechaFin)
                     : '----------'}
                 </td>
                 <td>
